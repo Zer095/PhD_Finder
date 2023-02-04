@@ -1,0 +1,18 @@
+{% extends './layout.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<h1>{{ user.username }}</h1>
+<h2>Saved Positions</h2>
+<ul>
+    {% for save in username.saved %}
+</ul>
+
+{% else %} 
+<p>You need to <a href="{% url 'positions:login %}">login</a> or <a href="{% url 'positions:register %}">register</a>.</p>
+{% endif %}
+
+
+{% endblock %}

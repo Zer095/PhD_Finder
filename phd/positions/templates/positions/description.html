@@ -1,0 +1,28 @@
+{% extends './layout.html' %}
+
+{% block content %}
+
+{% if position %}
+    <h1>Description of: {{ position.pos_title }}</h1>
+    <div>
+        {{ position.pos_desc|safe }}
+    </div>
+    {% if user.is_authenticated %}
+        {% if saved %} 
+        <form method="post" >
+            {% csrf_token %} 
+            <input type="hidden" value="{{ position.id }}" name="position_pk">
+            <button type="submit" class="btn btn-outline-primary" >Remove from Saved Positions</button>
+        </form>
+        {% else %} 
+        <form method="post" >
+            {% csrf_token %} 
+            <input type="hidden" value="{{ position.id }}" name="position_pk">
+            <button type="submit" class="btn btn-outline-primary" >Save Position</button>
+        </form>
+        {% endif %}
+    {% endif %}
+{% else %}
+    <p>The position does not exist.</p>
+{% endif %} 
+{% endblock %}

@@ -1,0 +1,13 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'phd_positions/style.css' %}">
+
+{% if latest_position_list %}
+    <ul>
+        {% for position in latest_position_list %}
+            <li><a href="{% url 'phd_positions:detail' position.id %}">{{ position.pos_title }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No position are available</p>
+{% endif %}

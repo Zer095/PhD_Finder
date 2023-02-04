@@ -1,0 +1,27 @@
+{% extends './layout.html' %}
+
+
+{% block content %}
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Expiring date</th>
+        <th scope="col">Link</th>
+      </tr>
+      </thead>
+      <tbody>
+        {% for position in saved_positions %}
+      <tr>
+        <th scope="row">{{position.id}}</th>
+        <td><a href="{% url 'positions:description' position.id %}">{{ position.pos_title }}</a></td>
+        <td>{{position.pos_exp_date|date:"SHORT_DATE_FORMAT"}}</td>
+        <td><a href="{{ p.pos_link }}" class="btn btn-warning">Apply now</a></td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    </div></div>
+{% endblock %}

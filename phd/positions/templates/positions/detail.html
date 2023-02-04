@@ -1,0 +1,18 @@
+{% extends './layout.html' %}
+
+{% block content %}
+
+<h1>{{ region }}</h1>
+{% if positions_in_region %}
+<ul>
+    {% for position in positions_in_region %} 
+    <li><a href="{% url 'positions:description' position.id %}">{{ position.pos_title }}</a>
+    </li>
+    {% endfor %} 
+</ul>
+{% else %} 
+<p>No positions are available.</p>
+{% endif %}
+
+
+{% endblock %}
